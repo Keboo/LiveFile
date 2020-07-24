@@ -15,12 +15,14 @@ namespace LiveFile
         /// <param name="endMessage">The message to display when the count down is not running.</param>
         /// <param name="timerFormat">The format for the time display. Any valid C# format string. </param>
         /// <param name="outputFile">The file to write to.</param>
+        /// <param name="keepFile">Delete file when program terminates.</param>
         /// <param name="verbose">Display verbose output</param>
-        static async Task Main(IConsole console, 
-            DateTime? countdownTo = null, 
-            string endMessage = null, 
+        static async Task Main(IConsole console,
+            DateTime? countdownTo = null,
+            string endMessage = null,
             string timerFormat = "h\\:mm\\:ss",
             string outputFile = "output.txt",
+            bool keepFile = false,
             bool verbose = false)
         {
             console.Out.WriteLine($"Running countdown to {countdownTo} in '{Path.GetFullPath(outputFile)}'");
@@ -43,14 +45,19 @@ namespace LiveFile
 
             WriteFile(console, $"{endMessage}", outputFile, verbose);
 
-            console.Out.WriteLine("Countdown complete. Press any key to close");
-            Console.ReadKey();
-            try
+            console.Out.Write("Countdown complete.");
+            if (!keepFile)
             {
-                File.Delete(outputFile);
-            }
-            catch (IOException)
-            {
+                console.Out.WriteLine(" Press any key to close");
+                Console.ReadKey();
+
+                try
+                {
+                    File.Delete(outputFile);
+                }
+                catch (IOException)
+                {
+                }
             }
         }
 
