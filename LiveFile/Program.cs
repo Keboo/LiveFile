@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CommandLine;
+using System.CommandLine.IO;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace LiveFile
         static async Task Main(IConsole console,
             DateTime? countdownTo = null,
             string endMessage = null,
-            string timerFormat = "h\\:mm\\:ss",
+            string timerFormat = @"{0:mm\:ss}",
             string outputFile = "output.txt",
             bool keepFile = false,
             bool verbose = false)
@@ -31,7 +32,8 @@ namespace LiveFile
                 string newText;
                 try
                 {
-                    newText = (countdownTo.Value - DateTime.Now).ToString(timerFormat);
+
+                    newText = string.Format(timerFormat, (countdownTo.Value - DateTime.Now));
                 }
                 catch (FormatException)
                 {
