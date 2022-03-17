@@ -1,6 +1,6 @@
 ﻿namespace LiveFile;
 
-internal enum Verbosity
+public enum Verbosity
 {
     Quiet,
     Normal,
