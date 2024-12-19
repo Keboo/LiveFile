@@ -1,0 +1,24 @@
+<!--
+  This enabled central package management. 
+  This allows for controling all NuGet packages within the Directory.Packages.props file
+  See https://learn.microsoft.com/nuget/consume-packages/Central-Package-Management?WT.mc_id=DT-MVP-5003472
+  -->
+<Project>
+  <!--
+  Uncomment if you need to enable inclusion of another Directory.Packages.props file from a parent directory
+  <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Packages.props, $(MSBuildThisFileDirectory)..))" />
+  -->
+  <!-- This property enables the Central Package Management feature -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <!-- https://learn.microsoft.com/nuget/consume-packages/Central-Package-Management?WT.mc_id=DT-MVP-5003472#transitive-pinning -->
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <!--
+  This defines the set of centrally managed packages.
+  This would typically list all NuGet packages used within this solution.
+  -->
+  <ItemGroup>
+    <PackageVersion Include="System.CommandLine.DragonFruit" Version="0.4.0-alpha.22114.1" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "LiveFile": {
+      "commandName": "Project"
+    },
+    "Display Help": {
+      "commandName": "Project",
+      "commandLineArgs": "--help"
+    },
+    "Countdown": {
+      "commandName": "Project",
+      "commandLineArgs": "--countdown-to 22:00 --end-message \"Stream Starting Soon\" --timer-format \"Stream Starting in {0:mm\\:ss}"
+    }
+  }
+}
