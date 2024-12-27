@@ -9,7 +9,7 @@
     },
     "Countdown": {
       "commandName": "Project",
-      "commandLineArgs": "--countdown-to 22:00 --end-message \"Stream Starting Soon\" --timer-format \"Stream Starting in {0:mm\\:ss}"
+      "commandLineArgs": "--countdown-to 21:00 --end-message \"Stream Starting Soon\" --timer-format \"Stream Starting in {0:mm\\:ss}"
     }
   }
 }
