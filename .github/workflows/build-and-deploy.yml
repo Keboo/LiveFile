@@ -62,5 +62,11 @@ jobs:
         with:
           name: NuGet
 
+      - name: NuGet login (OIDC → temporary API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }} 
+
       - name: Push NuGet
-        run: dotnet nuget push ${{ github.workspace }}/*nupkg --source https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+        run: dotnet nuget push ${{ github.workspace }}/*nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --skip-duplicate
