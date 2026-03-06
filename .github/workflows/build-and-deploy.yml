@@ -56,6 +56,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     
+    # Required for Trusted Publishing: allows GitHub to issue OIDC tokens for this job
+    # This enables secure, keyless authentication with NuGet.org
+    permissions:
+      id-token: write
+    
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v7
