@@ -33,7 +33,7 @@ jobs:
         run: dotnet pack --configuration Release --no-build -o ./NuGet
 
       - name: Upload NuGet artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: NuGet
           path: ./NuGet
